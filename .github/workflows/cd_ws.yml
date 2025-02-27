@@ -4,7 +4,7 @@
 # ssh into vm and start the new image
 
 
-name: CD (Prod) (Backend)
+name: CD (Prod) (ws)
 on:
   push:
     branches: [ main ]
@@ -21,14 +21,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-            #test(will not work as the secrets are not setup in git repo)
       
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./docker/Dockerfile.backend
+          file: ./docker/Dockerfile.ws
           push: true
-          tags: 10xdevs/todo-app-backend:${{ github.sha }} 
+          tags: 10xdevs/todo-app-websocket:${{ github.sha }} 
 
-#vm deploy setup             
+#test(will not work as the secrets are not setup in git repo)
+                
