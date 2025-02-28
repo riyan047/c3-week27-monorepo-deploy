@@ -22,15 +22,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Build and push
+      - name: Build and push 
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./docker/Dockerfile.frontend
           build-args:
-            - DATABASE_URL=${{secrets.DATABASE_URL}}
+            - DATABASE_URL=${{ secrets.DATABASE_URL }}
           push: true
-          tags: 10xdevs/todo-app-frontend:${{ github.sha }} 
+          tags: 100xdevs/todo-app-websocket:${{ github.sha }}
 
 #test(will not work as the secrets are not setup in git repo)
                 
